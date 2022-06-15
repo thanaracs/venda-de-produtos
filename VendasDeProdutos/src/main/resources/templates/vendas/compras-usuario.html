@@ -1,0 +1,47 @@
+<body>
+<div th:insert="fragments/header :: modelheader" ></div>
+<div class="container" id="container-3"><br>
+    <form th:action="@{/vendas/buscarfordata}" method="get">
+        <input type="date" th:value="@{databusca}" th:name="databusca">
+        <input type="submit" value="buscar">
+    </form>
+    <br>
+    <table class="table" >
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Data</th>
+            <th>Qtd. Item</th>
+            <th>Cliente</th>
+            <th>Valor</th>
+        </tr>
+        </thead>
+        <tr th:each="v : ${vendas}">
+            <td th:text="${v.idVenda}"> </td>
+            <td th:text="${v.localDate}"> </td>
+            <td th:text="${v.QtdTotalItem}"> </td>
+            <td th:text="${v.cliente.getNome()}"> </td>
+            <td th:text="'R$: ' + ${v.TotalVenda()}">
+            <td><a role="button" class="btn btn-min btn-info" th:href="@{/vendas/details/{idVenda}(idVenda=${v.idVenda})}">DETALHES</a></td>
+        </tr>
+    </table>
+    <style>
+        #container-3{
+            width: 800px;
+            position: absolute;
+            left: 30%;
+            top: 15%;
+            background-color: white;
+            border-radius: 2%;
+        }
+        .rodape{
+            position: fixed;
+            top: 95%;
+            width: 100%;
+            text-align: center;
+        }
+        th, td{color: black;}
+
+<div class="rodape" th:insert="fragments/footer :: modelfooter"></div>
+</body>
+</html>

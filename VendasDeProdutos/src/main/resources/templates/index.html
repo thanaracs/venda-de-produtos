@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"  th:fragment="modelheader">
+<head>
+
+</head>
+<body>
+
+<div th:insert="fragments/header :: modelheader"></div>
+<div class="container boxgeral" id="container-3">
+    <h3>Seja bem-vindo(a) ao Beco Diagonal...</h3>
+    <!--<div class="list-group">
+        &lt;!&ndash;<a href="#" class="list-group-item list-group-item-action active bg-info">Beco Diagonal</a>&ndash;&gt;
+        <a href="produtos/cadastrar"  class="list-group-item list-group-item-action">Cadastrar Produto</a>
+        <a href="produtos/listar" class="list-group-item list-group-item-action">Listar Produtos</a>
+        <a href="vendas/catalogo" class="list-group-item list-group-item-action">Catalogo</a>
+        <a href="vendas/carrinho" class="list-group-item list-group-item-action">Carrinho</a>
+        <a href="vendas/list" class="list-group-item list-group-item-action">Compras</a>
+        <a href="clientes/cadastrar-cliente" class="list-group-item list-group-item-action">Cadastrar Cliente</a>
+        <a href="clientes/list" class="list-group-item list-group-item-action">Consultar Cliente</a>
+    </div>-->
+</div>
+
+<style>
+    #container-3{
+        width: 800px;
+       position: absolute;
+        left: 30%;
+        top: 45%
+
+    }
+    h3{;
+        color: white;
+        font-family: "Roboto", sans-serif;
+        font-size: 36px;
+        position: absolute;
+        top: 35%;
+        left: 10%;
+        text-shadow: 0px 0px 15px #9C41DD, 0px 0px 5px rgba(156, 65, 221, 0.99);
+    }
+    .rodape{
+        position: fixed;
+        top: 95%;
+        width: 100%;
+        text-align: center;
+    }
+</style>
+<div class="rodape" th:insert="fragments/footer :: modelfooter"></div>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"  th:fragment="modelheader">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
+    <title>Beco Diagonal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<body class="jumbotron">
+<div id="menu container-1">
+<!--   <img src="https://i.pinimg.com/originals/0f/96/ab/0f96ab4b935276ad2e18844b90aa3589.jpg"/>-->
+    <img src="/img/image_processing20210907-22035-12jv9i4%20quadrado.png"/>
+        <ul class="menu-links navbar-nav me-auto mb-2 mb-lg-0" id="container-2" sec:authorize="hasRole('ADMIN')">
+            <li>Olá, <span sec:authentication="name"><br></li><br>
+            <li class="nav-item "><a class="nav-link dropdown-item"  aria-current="page" href="../../home">Home</a></li>
+            <li class="nav-item"><a class="nav-link dropdown-item" sec:authorize="hasRole('ADMIN')" aria-current="page" th:href="@{/clientes/editar}">Editar Perfil</a></li>
+            <li class="nav-item "><a class="nav-link dropdown-item" sec:authorize="hasRole('ADMIN')" th:href="@{/clientes/cadastros}">Cadastrar</a></li>
+            <li class="nav-item "><a class="nav-link dropdown-item " sec:authorize="hasRole('ADMIN')"  aria-current="page" href="../../consultas">Consultar</a></li>
+            <li class="nav-item"><a class="nav-link dropdown-item" sec:authorize="hasRole('ADMIN')"  aria-current="page" href="../../vendas/catalogo">Catalogo</a></li>
+            <li class="nav-item"><a class="nav-link dropdown-item" sec:authorize="hasRole('ADMIN')" aria-current="page" href="../../vendas/carrinho">Carrinho</a></li>
+            <li class="nav-item"><a class="nav-link dropdown-item " sec:authorize="hasRole('ADMIN')" aria-current="page" href="../../vendas/list">Compras Finalizadas</a></li>
+        </ul>
+        <ul class="menu-links navbar-nav me-auto mb-2 mb-lg-0" id="container-4"  sec:authorize="hasRole('USER')">
+            <li>Olá, <span sec:authentication="name"><br></li><br>
+            <li class="nav-item"><a class="nav-link dropdown-item" sec:authorize="hasRole('USER')"aria-current="page" href="../../home">Home</a></li>
+            <li class="nav-item"><a class="nav-link dropdown-item" sec:authorize="hasRole('USER')" aria-current="page" th:href="@{/clientes/editar}">Editar Perfil</a></li>
+            <li class="nav-item"><a class="nav-link dropdown-item" sec:authorize="hasRole('USER')" aria-current="page" href="../../vendas/catalogo">Catalogo</a></li>
+            <li class="nav-item"><a class="nav-link dropdown-item" sec:authorize="hasRole('USER')" aria-current="page" href="../../vendas/carrinho">Carrinho</a></li>
+            <li class="nav-item"><a class="nav-link dropdown-item" sec:authorize="hasRole('USER')" aria-current="page" href="../../vendas/compras-usuario">Compras Finalizadas</a></li>
+        </ul>
+</div>
+
+
+    <form class="nav-link px-2 sair " th:action="@{/logout}" method="post"><button class="btn me-2 text-white" type="submit">Sair</button></form>
+<div id="menu container-2">
+    <ul class="squares">
+    </ul>
+<style>
+    #user-name{
+        position: absolute;
+        top: 28%;
+        left: 5%;
+    }
+    img{
+        width: 8%;
+        position: absolute;
+        left: 2.5%;
+        top: 10%;
+        border-radius: 50%;
+    }
+    .squares{
+        width: 200px;
+        height:800px;
+        background-color: #4E2AA4B2;
+    }
+    #menu container-1{
+        display: inline-block;
+        text-display: none;
+        background-color: #0B021D;
+    }
+    #container-2{
+        position: absolute;
+        top: 30%;
+        left: 0%;
+        width: 200px;
+        text-align: center;
+    }
+    #container-4{
+        position: absolute;
+        top: 30%;
+        left: 0%;
+        width: 200px;
+        text-align: center;
+    }
+    body {
+        color: white;
+        font: 12px Verdana, sans-serif;
+        background-color: #0B021D;
+        text-display: none;
+    }
+    th, td{
+        color: white;
+    }
+    .sair{
+        position: absolute;
+        top: 1%;
+        left: 95%;
+    }
+    </style>
+
+

@@ -1,0 +1,54 @@
+
+<body class="jumbotron">
+<div th:insert="fragments/header :: modelheader"></div>
+<div class="container" id="container-3">
+    <form th:action="@{/clientes/buscarforname}" method="get">
+        <input type="text" th:value="@{nome}" th:name="nome">
+        <input type="submit" value="buscar">
+    </form>
+    <br>
+    <table class="table ">
+        <thead class="table">
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th colspan="2" class="text-center">Opções</th>
+        </tr>
+        </thead>
+        <tr th:each="c : ${clientePF}">
+            <td scope="row" th:text="${c.idCliente}"> </td>
+            <td th:text="${c.nome}"> </td>
+            <td th:text="${c.CPF}"> </td>
+            <!-- retornar vendas <td th:text="${c.getVenda}"> </td>-->
+            <td><a role="button" class="btn btn-danger" onclick="return window.confirm('Tem certeza que deseja excluir este Produto?')"  th:href="@{/clientes/remove/{idCliente}(idCliente=${c.idCliente})}">Excluir</a> </td>
+        </tr>
+    </table>
+    <a role="button" class="btn btn-secondary" th:href="@{/clientes/cadastrar-cliente}">Voltar</a>
+</div>
+<div th:insert="fragments/footer :: modelfooter"></div>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+    body {
+        font-family: 'Noto Sans', sans-serif;
+    }
+     #container-3{
+         width: 800px;
+         position: absolute;
+         left: 30%;
+         top: 15%
+     }
+    .rodape{
+        position: fixed;
+        top: 95%;
+        width: 100%;
+        text-align: center;
+    }
+    /*table{*/
+    /*    background-color: white;*/
+    /*}*/
+    </style>
+      <div class="rodape" th:insert="fragments/footer :: modelfooter"></div>
+
+</html>

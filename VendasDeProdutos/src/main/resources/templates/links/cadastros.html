@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+</head>
+<body>
+<div th:insert="fragments/header :: modelheader"></div>
+<div class="container boxgeral" id="container-3">
+    <div class="list-group">
+        <a href="../clientes/form-user" class="list-group-item list-group-item-action">Cadastrar Cliente</a>
+        <a href="../clientes/form-adm" class="list-group-item list-group-item-action">Cadastrar Administrador</a>
+        <a href="../produtos/cadastrar" class="list-group-item list-group-item-action">Cadastrar Produto</a>
+    </div>
+</div>
+<style>
+    #container-3{
+        width: 800px;
+        position: absolute;
+        left: 30%;
+        top: 15%
+    }
+    .rodape{
+        position: fixed;
+        top: 95%;
+        width: 100%;
+        text-align: center;
+    }
+</style>
+<div th:insert="fragments/footer :: modelfooter" class="rodape"></div>
+</body>
+
+
+</html>

@@ -1,0 +1,69 @@
+<html>
+<head>
+    <title>Detalhes de Compras</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="jumbotron">
+<div th:insert="fragments/header :: modelheader" ></div>
+<div class="container" id="container-3">
+
+    <table class="table table-striped" >
+        <thead class="table-dark">
+        <tr>
+            <th>Id Venda</th>
+            <th>Data</th>
+            <th>Quantidade de itens</th>
+            <th>Total</th>
+            <th>Cliente</th>
+        </tr>
+        </thead>
+        <tr th:each="v : ${vendas}">
+            <td scope="row" th:text="${v.idVenda}"> </td>
+            <td th:text="${v.localDate}"> </td>
+            <td th:text="${v.QtdTotalItem}"> </td>
+            <td th:text="${v.TotalVenda()}"> </td>
+            <td th:text="${v.cliente.getNome()}"> </td>
+        </tr>
+    </table>
+    <table class="table"><hr><br><br>
+        <thead class="table-dark">
+        <tr>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Preço Unitário</th>
+            <th>Valor Total</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="table-light" th:each="i : ${itemVenda}">
+            <td th:text="${i.produto.descricao}"> </td>
+            <td th:text="${i.quantidade}"> </td>
+            <td th:text="${#numbers.formatDecimal(i.produto.valor, 1, 2)}"> </td>
+            <td th:text="${#numbers.formatDecimal(i.TotalItem(), 1, 2)}"> </td>
+        </tr>
+        </tbody>
+    </table>
+<!--    <a role="button" class="btn btn-secondary" th:href="@{/vendas/list}">Voltar</a>-->
+</div>
+<style>
+    #container-3{
+        width: 800px;
+        position: absolute;
+        left: 30%;
+        top: 15%;
+        background-color: white;
+        border-radius: 2%;
+    }
+    .rodape{
+        position: fixed;
+        top: 95%;
+        width: 100%;
+        text-align: center;
+    }
+    th, td{color: black;}
+</style>
+<div class="rodape" th:insert="fragments/footer :: modelfooter"></div>
+</body>
+</html>

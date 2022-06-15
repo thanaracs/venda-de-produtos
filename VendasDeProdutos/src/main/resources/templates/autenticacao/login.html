@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
+
+    <link href="/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet"/>
+
+</head>
+
+<body>
+<h1>QUE BOM VER << VOCÊ >><br> POR AQUI.</h1>
+<div class="row container">
+
+    <div class="mx-auto">
+        <div class="card">
+            <h5 class="card-header">Faça seu login:</h5>
+            <div class="card-body">
+                <form th:action="@{/login}" method="post">
+                    <div>
+                        <label>Usuário:</label><br>
+                        <input class="input-user" type="text" name="username" placeholder="ex: teste"/>
+                    </div><br>
+                    <div>
+                        <label>Senha:</label><br>
+                        <input class="input-user"type="password" name="password" placeholder="ex: 123"/>
+                    </div><br>
+
+                    <div class="form-group buttom-login">
+                        <button type="submit" class="buttom-config">Login</button>
+                    </div>
+                    <div>
+                        <a th:href="@{/clientes/cadastrousuario}">Cadastre-se</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br>
+        <div th:if="${param.error}">
+            <div class="alert alert-danger">Usuário/senha inválidos!</div>
+        </div>
+    </div>
+</div>
+<ul class="squares">
+    <li></li>
+    </ul>
+<style>
+    textarea:focus, input:focus, select:focus {
+        box-shadow: 0 0 0 0;
+        border: 0 none;
+        outline: 0;
+    }
+    body{
+        background-color: #0B021D;
+    }
+    h1{;
+        color: white;
+        font-family: "Roboto", sans-serif;
+        font-size: 36px;
+        position: absolute;
+        top: 40%;
+        left: 25%;
+        text-shadow: 0px 0px 15px #9C41DD, 0px 0px 5px rgba(156, 65, 221, 0.99);
+    }
+    .buttom-login{
+        text-align: center;
+    }
+    .buttom-config{
+        text-align: center;
+        cursor: pointer;
+        outline:none;
+        padding: 5px 30px;
+        border-radius: 18px;
+        background: none;
+        transition: box-shadow 0.1s;
+        color: rgba(255, 255, 255, 0.63);
+        border: 4px solid #0B021D;
+    }
+    button:hover{
+        border: 4px solid #9C41DD;
+        color: #9C41DD;
+        box-shadow: 0px 0px 15px #9C41DD, 0px 0px 5px rgba(156, 65, 221, 0.99); /*sombra ao redor do botão*/
+    }
+    .input-user{
+        width: 260px;
+        background: #0B021D;
+        color:#9C41DD;
+        border-radius: 10px;
+        border: 4px solid #0B021D;
+    }
+    .input-user:hover{
+        border: 4px solid #9C41DD;
+        color: #9C41DD;
+    }
+    .container{
+        position: absolute;
+        top: 25%;
+        left: 40%;
+    }
+    .card{
+        width: 300px;
+        border-radius: 5%;
+        background-color: #13082A;
+        color: rgba(255, 255, 255, 0.63);
+    }
+    img{
+        width: 20%;
+        position: absolute;
+        top: 15%;
+        left: 20%;
+        border-radius: 50%;
+        border: 4px solid #9C41DD;
+        box-shadow: 0px 0px 45px #9C41DD, 0px 0px 35px rgba(156, 65, 221, 0.99);
+    }
+    .squares li {
+        /*border-radius: 10%;*/
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.15);
+        display: block;
+        position: absolute;
+        bottom: -40px;
+        animation: up 4s infinite alternate;
+        z-index:-1
+    }
+
+    @keyframes up {
+        from {
+            transform: translateY(0);
+        }
+        to {
+            transform: translateY(-1000px);
+        }
+    }
+</style>
+<script>
+    const ulSquares = document.querySelector("ul.squares");
+
+    for (let i = 0; i < 11; i++) {
+        const li = document.createElement("li");
+
+        const random = (min, max) => Math.random() * (max - min) + min;
+
+        const size = Math.floor(random(10, 120));
+        const position = random(1, 99);
+        const delay = random(5, 0.1);
+        const duration = random(24, 12);
+
+        li.style.width = `${size}px`;
+        li.style.height = `${size}px`;
+        li.style.bottom = `-${size}px`;
+
+        li.style.left = `${position}%`;
+
+        li.style.animationDelay = `${delay}s`;
+        li.style.animationDuration = `${duration}s`;
+        li.style.animationTimingFunction = `cubic-bezier(${Math.random()}, ${Math.random()}, ${Math.random()}, ${Math.random()})`;
+
+        ulSquares.appendChild(li);
+    }
+
+</script>
+</body>
+
+
+</html>

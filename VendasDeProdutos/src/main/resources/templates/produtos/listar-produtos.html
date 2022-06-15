@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+
+<body>
+<div th:insert="fragments/header :: modelheader"></div>
+<div class="container" id="container-3">
+    <table class="table" >
+        <thead  style="background-color: #010136;color: white;">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col" style="color: #e1d608">Produto</th>
+            <th scope="col" style="color: mediumseagreen">Valor</th>
+            <th scope="col" style="color: #2abbbb">Editar</th>
+            <th scope="col" style="color: darkred">Excluir</th>
+        </tr>
+        </thead>
+        <tr th:each="p : ${produto}">
+            <td th:text="${p.idProduto}"> </td>
+            <td th:text="${p.descricao}"> </td>
+            <td th:text="'R$: ' +${p.valor}"> </td>
+            <td> <a class="botaoEditar btn btn-info btn-sm" th:href="@{/produtos/edit/{idProduto}(idProduto=${p.idProduto})}" >Editar</a> </td>
+            <td> <a class="botaoExluir btn btn-danger btn-sm" onclick="return window.confirm('Tem certeza que deseja excluir este Produto?')"  th:href="@{/produtos/remove/{idProduto}(idProduto=${p.idProduto})}">x</a> </td>
+        </tr>
+    </table>
+</div>
+<style>
+    .table{color: white;}
+    #container-3{
+        width: 800px;
+        position: absolute;
+        left: 30%;
+        top: 15%;
+    }
+    .rodape{
+        position: fixed;
+        top: 95%;
+        width: 100%;
+        text-align: center;
+    }
+</style>
+<div class="rodape" th:insert="fragments/footer :: modelfooter"></div>
+</body>
+
+</html>

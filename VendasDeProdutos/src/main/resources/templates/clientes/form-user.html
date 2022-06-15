@@ -1,0 +1,43 @@
+<html>
+<head>
+    <title>Cadastro de Cliente</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="jumbotron">
+<div th:insert="fragments/header :: modelheader"></div>
+<div class="container" id="container-3">
+<form th:action="@{/clientes/save}" th:object="${clientePF}" method="post">
+    <input type="hidden" th:field="*{idCliente}">
+    Nome: <input class="form-control" type="text" th:field="*{nome}">
+    CPF: <input class="form-control cpf" type="text" th:field="*{CPF}">
+    Login: <input class="form-control" type="text" th:field="*{usuario.login}">
+    Senha: <input class="form-control" type="password" th:field="*{usuario.password}">
+    <br>
+    <div class="alert alert-danger d-flex" role="alert" th:each="erro : ${#fields.detailedErrors()}">
+        <span th:text="${erro.message}"></span>
+    </div>
+    <input type="submit" class="btn btn-primary" value="Cadastrar">
+</form>
+</div>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+    body {
+        font-family: 'Noto Sans', sans-serif;
+    }
+    #container-3{
+        width: 800px;
+        position: absolute;
+        left: 30%;
+        top: 15%
+    }
+    .rodape{
+        position: fixed;
+        top: 95%;
+        width: 100%;
+        text-align: center;
+    }
+</style>
+<div class="rodape" th:insert="fragments/footer :: modelfooter"></div>
+</body>
+</html>

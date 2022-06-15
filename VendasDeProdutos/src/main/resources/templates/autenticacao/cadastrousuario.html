@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<body xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, user-scalable=no"/>
+    <link href="/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+</body>
+<html>
+<head>
+    <title>Cadastro de Usuario</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body class="text-center">
+<main class="form-signin">
+    <div th:class="${!#strings.isEmpty(erroCadastro)}?${'alert alert-danger d-flex'}">
+        <span th:text="${!#strings.isEmpty(erroCadastro)}?${erroCadastro}"></span>
+    </div>
+    <form th:action="@{/clientes/salvar}" th:object="${clientePF}" method="post">
+        <h5 class="card-header">Faça seu cadastro</h5>
+        <input type="hidden" th:field="*{idCliente}">
+        <div class="form-floating">
+            <label>Nome: <input class="form-control" type="text" th:field="*{nome}"></label>
+        </div>
+        <div class="form-floating">
+            <label>CPF: <input class="form-control cpf" type="text" th:field="*{CPF}"></label>
+        </div>
+        <div class="form-floating">
+            <label>Login: <input class="form-control" type="text" th:field="*{usuario.login}"></label>
+        </div>
+        <div class="form-floating">
+            <label>Senha: <input class="form-control" type="password" th:field="*{usuario.password}"></label>
+        </div>
+        <br>
+        <div class="alert alert-danger d-flex" role="alert" th:each="erro : ${#fields.detailedErrors()}">
+            <span th:text="${erro.message}"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Cadastrar">
+        </div>
+        <p class="mt-5 mb-3 text-muted">&copy; 2021 Programação para WEB II - Thainara Carvalho</p>
+    </form>
+
+</main>
+</body>
+</html>

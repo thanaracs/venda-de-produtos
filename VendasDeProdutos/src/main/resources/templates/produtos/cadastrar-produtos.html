@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+</head>
+<body class="jumbotron">
+<div th:insert="fragments/header :: modelheader"></div>
+
+<!--FOMULÁRIO -->
+<div class="container" id="container-3">
+    <h3>Adicionar Produtos</h3><br>
+    <div class="row">
+        <form class="col" th:action="${produto.idProduto == 0} ? @{/produtos/save} : @{/produtos/update}" th:object="${produto}" method="post">
+            <input type="hidden" th:field="*{idProduto}">
+            Informe o produto: <input class="form-control" type="text" th:field="*{descricao}" placeholder="Ex. Caneta Bic" ><br>
+            Informe o Valor: <input class="form-control" type="text" th:field="*{valor}" placeholder="Ex. 10.00"><br>
+            <input type="submit" class="btn btn-info" value="Cadastrar Produto">
+            <!--ERROR-->
+            <div role="alert" th:each="erro : ${#fields.detailedErrors()}">
+                <span th:text="${erro.message}"></span>
+            </div>
+        </form>
+    </div>
+</div>
+<style>
+    #container-3{
+        width: 800px;
+        position: absolute;
+        left: 30%;
+        top: 15%
+    }
+    .rodape{
+        position: fixed;
+        top: 95%;
+        width: 100%;
+        text-align: center;
+    }
+</style>
+<div class="rodape" th:insert="fragments/footer :: modelfooter"></div>
+
+<div th:insert="fragments/footer :: modelfooter"></div>
+</body>
+</html>
