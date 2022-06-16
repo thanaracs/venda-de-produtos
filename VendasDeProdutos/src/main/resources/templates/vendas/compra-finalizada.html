@@ -1,15 +1,25 @@
 <body>
 <div th:insert="fragments/header :: modelheader" ></div>
 <div class="container" id="container-3"><br>
+    <img class="compra-finalizada" src="/img/icon-certo.png">
+    <h1>Sua compra foi finalizada com sucesso!</h1>
+    <p>Verifique sua lista de compras e aguarde a entrega do mesmo.</p>
 
-    <h1>Compra finalizada com sucesso!</h1>
 
     <style>
+        h1{
+            font-size: 18px;
+        }
+        .compra-finalizada{
+            position: absolute;
+            top: 8%;
+            left: 51%;
+        }
         #container-3{
             width: 800px;
             position: absolute;
             left: 30%;
-            top: 15%;
+            top: 35%;
             color: white;
             border-radius: 2%;
         }

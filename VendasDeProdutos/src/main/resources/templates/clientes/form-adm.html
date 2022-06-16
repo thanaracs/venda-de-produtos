@@ -7,6 +7,7 @@
 <body class="jumbotron">
 <div th:insert="fragments/header :: modelheader"></div>
 <div class="container" id="container-3">
+    <h1 class="info-page">Editar Perfil</h1><br><br><br>
 <form th:action="@{/clientes/salvaradm}" th:object="${clientePF}" method="post">
     <input type="hidden" th:field="*{idCliente}">
     Nome: <input class="form-control" type="text" th:field="*{nome}">

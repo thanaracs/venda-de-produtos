@@ -8,6 +8,7 @@
 <div th:insert="fragments/header :: modelheader"></div>
 <div class="container" id="container-3">
   <div class="row">
+    <h1 class="info-page">Editar Perfil</h1><br><br><br>
     <form th:action="@{/clientes/update}" th:object="${clientePF}" method="post">
       <input type="hidden" th:field="*{idCliente}">
       Nome: <input class="form-control" type="text" th:field="*{nome}">
@@ -23,6 +24,10 @@
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
   body {
     font-family: 'Noto Sans', sans-serif;
+  }
+  .info-page{
+    font-size: 18px;
+    color: #c6a2e7;
   }
    #container-3{
      width: 800px;

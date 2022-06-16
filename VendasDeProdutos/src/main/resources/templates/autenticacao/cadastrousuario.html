@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<body xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, user-scalable=no"/>
     <link href="/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
-</body>
-<html>
 <head>
     <title>Cadastro de Usuario</title>
     <meta charset="UTF-8">
@@ -14,35 +12,97 @@
     <link href="/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body class="text-center">
-<main class="form-signin">
-    <div th:class="${!#strings.isEmpty(erroCadastro)}?${'alert alert-danger d-flex'}">
-        <span th:text="${!#strings.isEmpty(erroCadastro)}?${erroCadastro}"></span>
-    </div>
-    <form th:action="@{/clientes/salvar}" th:object="${clientePF}" method="post">
-        <h5 class="card-header">Faça seu cadastro</h5>
-        <input type="hidden" th:field="*{idCliente}">
-        <div class="form-floating">
-            <label>Nome: <input class="form-control" type="text" th:field="*{nome}"></label>
-        </div>
-        <div class="form-floating">
-            <label>CPF: <input class="form-control cpf" type="text" th:field="*{CPF}"></label>
-        </div>
-        <div class="form-floating">
-            <label>Login: <input class="form-control" type="text" th:field="*{usuario.login}"></label>
-        </div>
-        <div class="form-floating">
-            <label>Senha: <input class="form-control" type="password" th:field="*{usuario.password}"></label>
-        </div>
-        <br>
-        <div class="alert alert-danger d-flex" role="alert" th:each="erro : ${#fields.detailedErrors()}">
-            <span th:text="${erro.message}"></span>
-        </div>
-        <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="Cadastrar">
-        </div>
-        <p class="mt-5 mb-3 text-muted">&copy; 2021 Programação para WEB II - Thainara Carvalho</p>
-    </form>
 
+<main class="form-signin">
+    <div class="container" id="container-3">
+        <div class="card">
+            <div th:class="${!#strings.isEmpty(erroCadastro)}?${'alert alert-danger d-flex'}">
+                <span th:text="${!#strings.isEmpty(erroCadastro)}?${erroCadastro}"></span>
+            </div>
+            <form th:action="@{/clientes/salvar}" th:object="${clientePF}" method="post">
+                <h5 class="card-header">Faça seu cadastro</h5><br>
+                <input type="hidden" th:field="*{idCliente}">
+                <div class="form-floating">
+                    <label>Nome: <input class="form-control"  placeholder="Ex: José" type="text" th:field="*{nome}"></label>
+                </div>
+                <div class="form-floating">
+                    <label>CPF: <input class="form-control cpf" placeholder="Ex: 12345678980" type="text" th:field="*{CPF}"></label>
+                </div>
+                <div class="form-floating">
+                    <label>Login: <input class="form-control" placeholder="Ex: josesilva" type="text" th:field="*{usuario.login}"></label>
+                </div>
+                <div class="form-floating">
+                    <label>Senha: <input class="form-control" placeholder="Ex: 123jose" type="password" th:field="*{usuario.password}"></label>
+                </div>
+                <br>
+                <div class="alert alert-danger d-flex" role="alert" th:each="erro : ${#fields.detailedErrors()}">
+                    <span th:text="${erro.message}"></span>
+                </div>
+                <div class="form-group buttom-cadastro">
+                    <input type="submit" class="btn btn-primary buttom-config" value="Cadastrar">
+                </div>
+                <a href="../autenticacao/login">voltar</a>
+            </form>
+        </div>
+    </div>
 </main>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+    body {
+        font-family: 'Noto Sans', sans-serif;
+        background-color: #0B021D;
+        color: white;
+
+    }
+    #container-3{
+        width: 800px;
+        position: absolute;
+        left: 25%;
+        top: 15%;
+    }
+    .card{
+        width: 300px;
+        position: fixed;
+        top: 15%;
+        left: 40%;
+        border-radius: 5%;
+        background-color: #13082A;
+        color: rgba(255, 255, 255, 0.63);
+    }
+    .rodape{
+        position: fixed;
+        top: 95%;
+        width: 100%;
+        text-align: center;
+    }
+    a{
+        text-decoration: none;
+        color: #9C41DD;
+        position: fixed;
+        left: 55%;
+    }
+    .buttom-cadastro{
+        text-align: center;
+    }
+    .buttom-config{
+        text-align: center;
+        cursor: pointer;
+        outline:none;
+        padding: 5px 30px;
+        border-radius: 18px;
+        background: none;
+        transition: box-shadow 0.1s;
+        color: rgba(255, 255, 255, 0.63);
+        border: 4px solid #0B021D;
+        background-color: #13082A;
+    }
+    button:hover{
+        border: 4px solid #9C41DD;
+        color: #9C41DD;
+        box-shadow: 0px 0px 15px #9C41DD, 0px 0px 5px rgba(156, 65, 221, 0.99); /*sombra ao redor do botão*/
+    }
+
+</style>
+<div class="rodape" th:insert="fragments/footer :: modelfooter"></div>
 </body>
 </html>

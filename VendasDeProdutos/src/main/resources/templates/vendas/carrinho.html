@@ -40,7 +40,7 @@
 </div>-->
 <!--CARRINHO DE COMPRAS-->
 <div class="carrinho">
-    <h3>Carrinho de compras</h3><br>
+    <h1 class="info-page">Carrinho de compras</h1><br>
     <table class="table">
         <thead>
         <tr>
@@ -62,10 +62,11 @@
         </tbody>
 
     </table>
-    <br>
-    <div id="total">
+    <br><br><br>
+    <div id="total"><br>
     <label >TOTAL DA COMPRA: </label>
     <span th:text="'R$: ' +${session.venda.TotalVenda()}"></span><br>
+        <br>
     </div><br>
 
 
@@ -80,7 +81,7 @@
 <!--    </form>-->
     <form class="float-right" th:action="@{/vendas/save}" th:object="${venda}" method="post">
         <input type="hidden" th:value="${cliente}" th:name="venda.cliente" >
-        <label>Total Compra: R$ </label><strong th:text="${session.venda.TotalVenda()}"></strong>
+
         <input role="button" class="btn btn-primary" type="submit" value="Finalizar Compra">
     </form>
 

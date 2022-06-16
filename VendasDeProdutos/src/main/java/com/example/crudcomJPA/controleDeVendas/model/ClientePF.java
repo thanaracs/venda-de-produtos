@@ -1,10 +1,10 @@
 package com.example.crudcomJPA.controleDeVendas.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_clientepf")
@@ -14,7 +14,6 @@ public class ClientePF  extends Cliente implements Serializable {
 
     @Positive (message = "Necessario informar o CPF do cliente")
     private String CPF;
-
 
 
     public String getNome() {

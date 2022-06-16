@@ -7,6 +7,7 @@
 <body>
 <div th:insert="fragments/header :: modelheader" ></div>
     <div class="container" id="container-3"><br>
+        <h1 class="info-page">Lista de compras</h1><br><br>
         <form th:action="@{/vendas/buscarfordata}" method="get">
             <input type="date" th:value="@{databusca}" th:name="databusca">
             <input type="submit" value="buscar">

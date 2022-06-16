@@ -6,7 +6,7 @@
 <div th:insert="fragments/header :: modelheader"></div>
     <!--CATALOGO DE PRODUTOS-->
     <div class="catalogo" id="container-3">
-        <h3 class="home flow-text">Catalogo de produtos</h3>
+        <br><h1 class="info-page">Catálogo de produtos</h1><br>
         <table class="table table-bordered ">
             <thead>
             <tr>
@@ -55,7 +55,9 @@
              width: 800px;
              position: absolute;
              left: 30%;
-             top: 15%
+             top: 15%;
+             background-color: white;
+             border-radius: 2%;
          }
         .rodape{
             position: fixed;
@@ -63,6 +65,7 @@
             width: 100%;
             text-align: center;
         }
+        th, td{color: black;}
     </style>
 <div class="rodape" th:insert="fragments/footer :: modelfooter"></div>
 </body>
