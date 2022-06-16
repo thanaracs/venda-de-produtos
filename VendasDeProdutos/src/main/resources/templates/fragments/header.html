@@ -1,12 +1,6 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"  th:fragment="modelheader">
-
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, user-scalable=no"/>
@@ -20,10 +14,14 @@ and open the template in the editor.
 
 <body class="jumbotron">
 <div id="menu container-1" style="font-size: 14px">
-<!--   <img src="https://i.pinimg.com/originals/0f/96/ab/0f96ab4b935276ad2e18844b90aa3589.jpg"/>-->
-    <img src="/img/image_processing20210907-22035-12jv9i4%20quadrado.png"/>
+
+    <div>
+        <img  sec:authorize="hasRole('ADMIN')" src="/img/image_processing20210907-22035-12jv9i4%20quadrado.png"/>
+        <img sec:authorize="hasRole('USER')"src="/img/brasao-hogwarts.jpg"/>
+    </div>
+
         <ul class="menu-links navbar-nav me-auto mb-2 mb-lg-0" id="container-2" sec:authorize="hasRole('ADMIN')">
-            <li style="color: white;">Olá, <span sec:authentication="name"><br></li><br>
+            <br><li style="color: white;">Olá, <span sec:authentication="name"><br></li><br>
             <li class="nav-item"><a class="nav-link dropdown-item" style="color: #c6a2e7;" aria-current="page" href="../../home">Home</a></li>
             <li class="nav-item"><a class="nav-link dropdown-item" style="color: #c6a2e7;" sec:authorize="hasRole('ADMIN')" aria-current="page" th:href="@{/clientes/editar}">Editar Perfil</a></li>
             <li class="nav-item"><a class="nav-link dropdown-item" style="color: #c6a2e7;" sec:authorize="hasRole('ADMIN')" th:href="@{/clientes/cadastros}">Cadastrar</a></li>
@@ -76,7 +74,7 @@ and open the template in the editor.
     .squares{
         width: 200px;
         height:800px;
-        background-color: #4E2AA4B2;
+        background-color: rgba(58, 29, 128, 0.7);
     }
     #menu{
         display: inline-block;
@@ -86,7 +84,7 @@ and open the template in the editor.
     }
     #container-2{
         position: absolute;
-        top: 30%;
+        top: 33%;
         left: 0%;
         width: 200px;
         text-align: center;
