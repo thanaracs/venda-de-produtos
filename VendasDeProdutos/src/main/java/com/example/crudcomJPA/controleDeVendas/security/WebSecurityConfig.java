@@ -25,7 +25,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/clientes/salvar").permitAll()
                 .antMatchers("/clientes/editar").permitAll()
                 .antMatchers("/clientes/form").permitAll()
-                .antMatchers("../../cadastros").hasAnyRole("ADMIN")
+                .antMatchers("../" +
+                        ",../cadastros").hasAnyRole("ADMIN")
                 .anyRequest() //define que a configuração é válida para qualquer requisição.
                 .authenticated() //define que o usuário precisa estar autenticado.
                 .and()

@@ -24,8 +24,7 @@
             <td><a role="button" class="btn btn-danger" onclick="return window.confirm('Tem certeza que deseja excluir este Produto?')"  th:href="@{/clientes/remove/{idCliente}(idCliente=${c.idCliente})}">Excluir</a> </td>
         </tr>
     </table>
-    <a role="button" class="btn btn-secondary" th:href="@{/clientes/cadastrar-cliente}">Voltar</a>
-</div>
+
 <div th:insert="fragments/footer :: modelfooter"></div>
 
 <style>
