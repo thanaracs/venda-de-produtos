@@ -17,3 +17,5 @@ BANCO DE DADOS: postgresql
 
 <img src="spring-boot.png" width="50" height="50"><img src="jpa.png" width="50" height="50"><img src="html.png" width="50" height="50"><img src="css.png" width="50" height="50">
 <img src="javascript.png" width="50" height="50"><img src="postgre.png" width="50" height="50">
+
+OBS: AO CADASTRAR ADMIN E USER NA TABELA: ADMIN_ROLE ADMIN_USER
